@@ -1,6 +1,7 @@
 package at.htl.aopdemo.session;
 
 import at.htl.aopdemo.entity.Book;
+import at.htl.aopdemo.entity.Reservation;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -27,5 +28,10 @@ public class InitBean {
     em.persist(book2);
     Book book3 = new Book("Tom Turbo: Die Ritterburg am Meeresgrund", "Thomas C. Brezina", 80);
     em.persist(book3);
+
+    Reservation reservation1 = new Reservation("huberfranz@mail.com", book1);
+    em.persist(reservation1);
+    Reservation reservation2 = new Reservation("meiermax@mail.com", book2);
+    em.persist(reservation2);
   }
 }

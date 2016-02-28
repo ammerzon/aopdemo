@@ -1,6 +1,6 @@
 package at.htl.aopdemo.business;
 
-import at.htl.aopdemo.entity.Book;
+import at.htl.aopdemo.entity.Reservation;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -13,36 +13,36 @@ import java.util.List;
  * Date: 28.02.16
  */
 @Stateless
-public class BookFacade {
+public class ReservationFacade {
 
   @PersistenceContext
   private EntityManager em;
 
-  public void create(Book entity) {
+  public void create(Reservation entity) {
     em.persist(entity);
   }
 
   public void deleteById(Long id) {
-    Book entity = em.find(Book.class, id);
+    Reservation entity = em.find(Reservation.class, id);
     if (entity != null) {
       em.remove(entity);
     }
   }
 
-  public Book findById(Long id) {
-    return em.find(Book.class, id);
+  public Reservation findById(Long id) {
+    return em.find(Reservation.class, id);
   }
 
-  public Book update(Book entity) {
+  public Reservation update(Reservation entity) {
     return em.merge(entity);
   }
 
-  public List<Book> listAll() {
+  public List<Reservation> listAll() {
     return listAll(null, null);
   }
 
-  public List<Book> listAll(Integer startPosition, Integer maxResult) {
-    TypedQuery<Book> findAllQuery = em.createQuery("SELECT DISTINCT b FROM Book b ORDER BY b.id", Book.class);
+  public List<Reservation> listAll(Integer startPosition, Integer maxResult) {
+    TypedQuery<Reservation> findAllQuery = em.createQuery("SELECT DISTINCT r FROM Reservation r ORDER BY r.id", Reservation.class);
     if (startPosition != null) {
       findAllQuery.setFirstResult(startPosition);
     }

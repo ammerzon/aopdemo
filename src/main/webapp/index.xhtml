@@ -1,0 +1,42 @@
+<!--<!DOCTYPE html>-->
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Reservation</title>
+</h:head>
+<body>
+<h1>Reservation</h1>
+
+<h:form id="form">
+    <p:growl id="msgs" showDetail="true"/>
+
+    <p:dataTable id="books" var="book" value="#{indexController.books}" selectionMode="single" selection="#{indexController.selectedBook}"
+                 rowKey="#{book.id}">
+        <p:ajax event="rowSelect" listener="#{indexController.onRowSelect}" update=":form:msgs"/>
+
+        <p:column headerText="Id">
+            <h:outputText value="#{book.id}"/>
+        </p:column>
+
+        <p:column headerText="Title">
+            <h:outputText value="#{book.title}"/>
+        </p:column>
+
+        <p:column headerText="Author">
+            <h:outputText value="#{book.author}"/>
+        </p:column>
+
+        <p:column headerText="Pages">
+            <h:outputText value="#{book.pages}"/>
+        </p:column>
+    </p:dataTable>
+
+    <h:outputLabel for="email" value="Email:" style="font-weight:bold" />
+    <p:inputText id="email" value="#{indexController.email}" />
+    <p:commandButton value="Submit" actionListener="#{indexController.createReservation}" icon="ui-icon-check" update=":form:msgs books email" />
+</h:form>
+</body>
+</html>
