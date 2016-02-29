@@ -23,7 +23,7 @@ public class LoggingInterceptor implements Serializable {
 
   @AroundInvoke
   public Object manageTransaction(InvocationContext ctx) throws Exception {
-    LOGGER.debug("Entering method: " + ctx.getMethod().getName());
+    LOGGER.info("Entering method: {}", ctx.getMethod().getName());
     return ctx.proceed();
   }
 }
