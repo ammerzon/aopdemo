@@ -1,6 +1,7 @@
 package at.htl.aopdemo.rest;
 
 import at.htl.aopdemo.annotation.Logging;
+import at.htl.aopdemo.annotation.Monitoring;
 import at.htl.aopdemo.business.BookFacade;
 import at.htl.aopdemo.entity.Book;
 
@@ -27,6 +28,7 @@ import java.util.List;
  */
 @Stateless
 @Path("book")
+@Monitoring
 @Logging
 public class BookEndpoint {
 

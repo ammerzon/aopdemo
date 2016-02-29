@@ -1,6 +1,7 @@
 package at.htl.aopdemo.web;
 
 import at.htl.aopdemo.annotation.Logging;
+import at.htl.aopdemo.annotation.Monitoring;
 import at.htl.aopdemo.business.BookFacade;
 import at.htl.aopdemo.business.ReservationFacade;
 import at.htl.aopdemo.entity.Book;
@@ -21,6 +22,7 @@ import java.util.List;
  * Date: 28.02.16
  */
 @Named
+@Monitoring
 @ViewScoped
 public class ReservationController implements Serializable {
 
