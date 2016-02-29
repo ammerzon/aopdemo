@@ -35,8 +35,11 @@
     </p:dataTable>
 
     <h:outputLabel for="email" value="Email:" style="font-weight:bold" />
-    <p:inputText id="email" value="#{reservationController.email}" />
-    <p:commandButton value="Submit" actionListener="#{reservationController.createReservation}" icon="ui-icon-check" update=":form:msgs books email" />
+    <p:inputText id="email" value="#{reservationController.email}" /><br/>
+    <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+    <p:inputText id="name" value="#{reservationController.name}" /><br/>
+    <p:commandButton value="Submit" actionListener="#{reservationController.createReservation}" icon="ui-icon-check"
+                     update=":form:msgs books email name" />
 </h:form>
 </body>
 </html>

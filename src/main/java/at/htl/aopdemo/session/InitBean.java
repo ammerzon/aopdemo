@@ -29,9 +29,9 @@ public class InitBean {
     Book book3 = new Book("Tom Turbo: Die Ritterburg am Meeresgrund", "Thomas C. Brezina", 80);
     em.persist(book3);
 
-    Reservation reservation1 = new Reservation("huberfranz@mail.com", book1);
+    Reservation reservation1 = new Reservation(book1, "huberfranz@mail.com", "Huber Franz");
     em.persist(reservation1);
-    Reservation reservation2 = new Reservation("meiermax@mail.com", book2);
+    Reservation reservation2 = new Reservation(book2, "meiermax@mail.com", "Meier Max");
     em.persist(reservation2);
   }
 }

@@ -3,9 +3,9 @@ package at.htl.aopdemo.web;
 import at.htl.aopdemo.annotation.Logging;
 import at.htl.aopdemo.annotation.Monitoring;
 import at.htl.aopdemo.business.BookFacade;
-import at.htl.aopdemo.business.ReservationFacade;
 import at.htl.aopdemo.entity.Book;
 import at.htl.aopdemo.entity.Reservation;
+import at.htl.aopdemo.interfaces.LoanService;
 import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
@@ -29,12 +29,13 @@ public class ReservationController implements Serializable {
   private List<Book> books;
   private Book selectedBook;
   private String email;
+  private String name;
 
   @Inject
   private BookFacade bookFacade;
 
   @Inject
-  private ReservationFacade reservationFacade;
+  private LoanService loanService;
 
   @PostConstruct
   private void init() {
@@ -61,6 +62,14 @@ public class ReservationController implements Serializable {
     this.email = email;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
   public void onRowSelect(SelectEvent event) {
     Book book = (Book) event.getObject();
     FacesMessage msg = new FacesMessage("Selected book", book.getTitle());
@@ -69,13 +78,11 @@ public class ReservationController implements Serializable {
 
   @Logging
   public void createReservation() {
-    Reservation reservation = new Reservation();
-    reservation.setBook(selectedBook);
-    reservation.setEmail(getEmail());
-    reservationFacade.create(reservation);
+    loanService.borrowBook(selectedBook, getEmail(), getName());
 
     selectedBook = null;
     setEmail("");
+    setName("");
     FacesMessage msg = new FacesMessage("Reservation saved");
     FacesContext.getCurrentInstance().addMessage(null, msg);
   }

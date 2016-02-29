@@ -32,6 +32,9 @@ public class Reservation implements Serializable {
   @Column(name = "email")
   private String email;
 
+  @Column(name = "name")
+  private String name;
+
   @ManyToOne
   private Book book;
 
@@ -39,9 +42,10 @@ public class Reservation implements Serializable {
   public Reservation() {
   }
 
-  public Reservation(String email, Book book) {
-    this.email = email;
+  public Reservation(Book book, String email, String name) {
     this.book = book;
+    this.email = email;
+    this.name = name;
   }
 
   public Long getId() {
@@ -70,5 +74,13 @@ public class Reservation implements Serializable {
 
   public void setBook(Book book) {
     this.book = book;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 }
