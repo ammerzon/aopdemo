@@ -27,7 +27,7 @@ public class MonitoringInterceptor implements Serializable {
     Object result = ctx.proceed();
     long totalTime = System.currentTimeMillis() - startTime;
     if (totalTime > 0) {
-      LOGGER.info("{}|Invocation time {}ms ", ctx.getClass().getSimpleName(), totalTime);
+      LOGGER.info("{}|Invocation time of {} {}ms ", ctx.getTarget().getClass().getSimpleName(), ctx.getMethod().getName(), totalTime);
     }
 
     return result;

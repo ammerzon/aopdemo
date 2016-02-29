@@ -14,7 +14,7 @@ import java.util.List;
  * Date: 28.02.16
  */
 @Stateless
-@Logging
+@Logging(shouldLogToFile = true)
 public class BookFacade {
 
   @PersistenceContext

@@ -23,7 +23,17 @@ public class LoggingInterceptor implements Serializable {
 
   @AroundInvoke
   public Object manageTransaction(InvocationContext ctx) throws Exception {
-    LOGGER.info("Entering method: {}", ctx.getMethod().getName());
+    boolean shouldLogToFile = false;
+    if (ctx.getTarget().getClass().getAnnotation(Logging.class) != null) {
+      shouldLogToFile = ctx.getTarget().getClass().getAnnotation(Logging.class).shouldLogToFile();
+    }
+
+    if (!shouldLogToFile) {
+      LOGGER.info("Entering method: {}", ctx.getMethod().getName());
+    } else {
+      // log to file
+    }
+
     return ctx.proceed();
   }
 }

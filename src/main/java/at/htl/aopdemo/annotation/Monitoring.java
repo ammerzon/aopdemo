@@ -16,5 +16,4 @@ import java.lang.annotation.Target;
 @Target({TYPE, METHOD})
 @Retention(RUNTIME)
 public @interface Monitoring {
-  //boolean requiresNew() default false;
 }
