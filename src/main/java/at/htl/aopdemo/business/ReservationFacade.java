@@ -1,5 +1,6 @@
 package at.htl.aopdemo.business;
 
+import at.htl.aopdemo.annotation.Logging;
 import at.htl.aopdemo.entity.Reservation;
 
 import javax.ejb.Stateless;
@@ -13,6 +14,7 @@ import java.util.List;
  * Date: 28.02.16
  */
 @Stateless
+@Logging
 public class ReservationFacade {
 
   @PersistenceContext

@@ -1,5 +1,6 @@
 package at.htl.aopdemo.web;
 
+import at.htl.aopdemo.annotation.Logging;
 import at.htl.aopdemo.business.BookFacade;
 import at.htl.aopdemo.business.ReservationFacade;
 import at.htl.aopdemo.entity.Book;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 @Named
 @ViewScoped
-public class IndexController implements Serializable {
+public class ReservationController implements Serializable {
 
   private List<Book> books;
   private Book selectedBook;
@@ -64,6 +65,7 @@ public class IndexController implements Serializable {
     FacesContext.getCurrentInstance().addMessage(null, msg);
   }
 
+  @Logging
   public void createReservation() {
     Reservation reservation = new Reservation();
     reservation.setBook(selectedBook);

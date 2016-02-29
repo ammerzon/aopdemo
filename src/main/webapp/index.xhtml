@@ -13,9 +13,9 @@
 <h:form id="form">
     <p:growl id="msgs" showDetail="true"/>
 
-    <p:dataTable id="books" var="book" value="#{indexController.books}" selectionMode="single" selection="#{indexController.selectedBook}"
+    <p:dataTable id="books" var="book" value="#{reservationController.books}" selectionMode="single" selection="#{reservationController.selectedBook}"
                  rowKey="#{book.id}">
-        <p:ajax event="rowSelect" listener="#{indexController.onRowSelect}" update=":form:msgs"/>
+        <p:ajax event="rowSelect" listener="#{reservationController.onRowSelect}" update=":form:msgs"/>
 
         <p:column headerText="Id">
             <h:outputText value="#{book.id}"/>
@@ -35,8 +35,8 @@
     </p:dataTable>
 
     <h:outputLabel for="email" value="Email:" style="font-weight:bold" />
-    <p:inputText id="email" value="#{indexController.email}" />
-    <p:commandButton value="Submit" actionListener="#{indexController.createReservation}" icon="ui-icon-check" update=":form:msgs books email" />
+    <p:inputText id="email" value="#{reservationController.email}" />
+    <p:commandButton value="Submit" actionListener="#{reservationController.createReservation}" icon="ui-icon-check" update=":form:msgs books email" />
 </h:form>
 </body>
 </html>
