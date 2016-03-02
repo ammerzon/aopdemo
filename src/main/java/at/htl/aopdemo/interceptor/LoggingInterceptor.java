@@ -22,7 +22,7 @@ public class LoggingInterceptor implements Serializable {
   private static Logger LOGGER = LoggerFactory.getLogger(LoggingInterceptor.class);
 
   @AroundInvoke
-  public Object manageTransaction(InvocationContext ctx) throws Exception {
+  public Object intercept(InvocationContext ctx) throws Exception {
     boolean shouldLogToFile = false;
     if (ctx.getTarget().getClass().getAnnotation(Logging.class) != null) {
       shouldLogToFile = ctx.getTarget().getClass().getAnnotation(Logging.class).shouldLogToFile();

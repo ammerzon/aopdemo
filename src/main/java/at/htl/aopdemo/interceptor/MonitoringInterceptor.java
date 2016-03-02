@@ -22,7 +22,7 @@ public class MonitoringInterceptor implements Serializable {
   private static Logger LOGGER = LoggerFactory.getLogger(MonitoringInterceptor.class);
 
   @AroundInvoke
-  public Object manageTransaction(InvocationContext ctx) throws Exception {
+  public Object intercept(InvocationContext ctx) throws Exception {
     long startTime = System.currentTimeMillis();
     Object result = ctx.proceed();
     long totalTime = System.currentTimeMillis() - startTime;
